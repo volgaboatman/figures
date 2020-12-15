@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>ru.figure.api</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ru.figure.bl\ru.figure.bl.csproj" />
+    <ProjectReference Include="..\ru.figure.db\ru.figure.db.csproj" />
+  </ItemGroup>
+
+
+</Project>

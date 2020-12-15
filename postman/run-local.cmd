@@ -1,0 +1,1 @@
+npx newman run Figure.postman_collection.json  -e figure-local.postman_environment.json  --reporters cli,junit --reporter-junit-export Results\TEST-result.xml --insecure

@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "b7f6fbbf-351b-4759-ab31-1065246c2c56",
+		"name": "Figure",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Circle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07763eaa-85f7-4623-9896-7f1e8ae59958",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set('id', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Circle\": {\r\n        \"Radius\":100\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/figure",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"figure"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Circle Area",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "68466198-b417-4b21-afd6-35c118bf7aa7",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Area\", () => {\r",
+							"  pm.expect(jsonData.area).to.eql(31415.926535897932);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/figure/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"figure",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Triangle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9ca35878-33e2-48f7-ad26-84a3324c2353",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = JSON.parse(responseBody);\r",
+							"pm.environment.set('id', jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Triangle\": {\r\n        \"A\": 40,\r\n        \"B\": 40,\r\n        \"Angle\": 90\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/figure/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"figure",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Triangle Area",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "650eb91a-f996-4383-b76c-b0329786da86",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"const jsonData = JSON.parse(responseBody);\r",
+							"pm.test(\"Area\", () => {\r",
+							"  pm.expect(jsonData.area).to.eql(1600);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/figure/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"figure",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "No circle or triangle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a031882f-566b-402d-8eae-e72480e4de6f",
+						"exec": [
+							"pm.test(\"Status code is 400\", () => {\r",
+							"  pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/figure",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"figure"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Both circle and triangle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "659e9492-6ab9-4b6a-84a5-d16168e56fff",
+						"exec": [
+							"pm.test(\"Status code is 400\", () => {\r",
+							"  pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Circle\": {\r\n        \"Radius\":100\r\n    },\r\n    \"Triangle\": {\r\n        \"A\": 40,\r\n        \"B\": 40,\r\n        \"Angle\": 90\r\n    }    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/figure",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"figure"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unknown id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ecc557ff-26e9-4115-8523-0046768b88be",
+						"exec": [
+							"pm.test(\"Status code is 400\", () => {\r",
+							"  pm.response.to.have.status(400);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/figure/{{$guid}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"figure",
+						"{{$guid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
